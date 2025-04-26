@@ -1,0 +1,16 @@
+{
+  "name": "vitaltrack",
+  "version": "1.0.0",
+  "description": "A smart Arduino-based health monitor that tracks vital signs in real-time, helping you stay informed and healthy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@serialport/parser-readline": "^13.0.0",
+    "serialport": "^13.0.0",
+    "socket.io": "^4.8.1"
+  }
+}
