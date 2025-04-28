@@ -30,27 +30,22 @@ function PulseMonitor() {
   const [labels, setLabels] = useState(Array(100).fill(''));
   const [bpmLabels, setBpmLabels] = useState(Array(20).fill(''));
   const [heartRate, setHeartRate] = useState(0);
-  const [oxygenLevel, setOxygenLevel] = useState(98);
 
-  // Calculate health status based on vitals
+  // Calculate health status based on heart rate only
   const healthStatus = useMemo(() => {
-    if (heartRate > 120 || heartRate < 50 || oxygenLevel < 95) {
+    if (heartRate > 120 || heartRate < 50) {
       return { status: 'Warning', color: 'text-yellow-500' };
     }
-    if (heartRate > 100 || oxygenLevel < 97) {
+    if (heartRate > 100) {
       return { status: 'Elevated', color: 'text-orange-500' };
     }
     return { status: 'Normal', color: 'text-green-500' };
-  }, [heartRate, oxygenLevel]);
+  }, [heartRate]);
 
   useEffect(() => {
     socket.on('pulseData', (data) => {
       setPulseHistory(prev => [...prev.slice(1), data]);
       setLabels(prev => [...prev.slice(1), '']);
-
-      if (Math.random() < 0.1) {
-        setOxygenLevel(prev => Math.min(100, Math.max(94, prev + Math.random() * 0.4 - 0.2)));
-      }
     });
 
     socket.on('bpmData', (bpm) => {
@@ -191,10 +186,6 @@ function PulseMonitor() {
             <div className="flex justify-between items-center border-b border-gray-800 pb-4">
               <span className="text-gray-400">Heart Rate</span>
               <span className="text-2xl font-bold text-green-500">{heartRate} BPM</span>
-            </div>
-            <div className="flex justify-between items-center border-b border-gray-800 pb-4">
-              <span className="text-gray-400">Oxygen Level</span>
-              <span className="text-2xl font-bold text-green-500">{Math.round(oxygenLevel)}%</span>
             </div>
             <div className="flex justify-between items-center border-b border-gray-800 pb-4">
               <span className="text-gray-400">Status</span>
