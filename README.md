@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# VitalTrack - Real-time Health Care Monitoring System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+VitalTrack is a Health monitoring dashboard built using **Arduino Uno**, **HW-827 pulse sensor**, **Node.js**, **Socket.io**, and **React.js** to visualize live pulse data and BPM on an interactive UI.
 
-## Available Scripts
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 📈 **Live Pulse Graph**  
+- 💓 **Real-time BPM Calculation**  
+- 📊 **BPM History Visualization**  
+- ✅ **Heart Status & Health Index**  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🛠️ Hardware Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Arduino Uno**  
+- **HW-827 Pulse Sensor**
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ⚙️ How It Works
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Pulse Sensor** captures analog heartbeat signals.  
+2. **Arduino Uno** reads the raw pulse data and sends it via **Serial Port**.  
+3. A **Node.js backend** reads this serial data and:  
+   - Applies a threshold of `850` to detect heartbeats — when the pulse value rises **above this threshold**, it's considered a **beat**.  
+   - Processes the number of detected beats over time to calculate **BPM**.  
+   - Emits both raw pulse data (for graph plotting) and BPM (for vitals display) to the frontend using **Socket.io**.  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. The **Frontend**:  
+   - Plots the raw data using **Chart.js** for real-time waveform visualization.  
+   - Displays BPM stats, history, and heart health status.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🧩 Tech Stack
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| Part           | Technology            |
+|----------------|------------------------|
+| Microcontroller | Arduino Uno           |
+| Sensor         | HW-827 Pulse Sensor    |
+| Backend        | Node.js, Socket.io     |
+| Frontend       | React.js               |
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🔧 Setup Instructions
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. **Upload Arduino Code:**
+   - Upload the `pulse_monitor.ino` file to your Arduino Uno using the Arduino IDE.
 
-## Learn More
+2. **Install All Packages:** 
+   ```bash
+   npm i; cd backend; npm i
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. **Run the Backend and Frontend together:**
+   ```bash
+   npm run both
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+> Make sure Arduino is connected and the COM port is correctly specified in `backend\index.js`.
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 📌 Note
 
-### Analyzing the Bundle Size
+This project is designed for educational and health visualization purposes only and **should not be used for medical diagnosis.**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
