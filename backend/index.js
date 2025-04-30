@@ -5,7 +5,7 @@ const io = require('socket.io')(3001, { cors: { origin: '*' } });
 const port = new SerialPort({ path: 'COM5', baudRate: 9600 });
 const parser = port.pipe(new ReadlineParser({ delimiter: '\n' }));
 
-console.log("Listening...");
+console.log("Monitoring...");
 
 let lastPulse = 0;
 let beatCount = 0;
