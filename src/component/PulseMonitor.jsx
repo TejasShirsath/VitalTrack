@@ -22,7 +22,9 @@ ChartJS.register(
   Legend
 );
 
-const socket = io('http://192.168.1.7:3001');
+const host = 'http://localhost:3001';
+
+const socket = io(host);
 
 function PulseMonitor() {
   const [pulseHistory, setPulseHistory] = useState(Array(100).fill(0));
