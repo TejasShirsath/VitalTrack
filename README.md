@@ -1,5 +1,9 @@
 # VitalTrack - Real-time Health Care Monitoring System
 
+
+https://github.com/user-attachments/assets/9f426045-daf7-42b7-89bd-e297180c076c
+
+
 VitalTrack is a Health monitoring dashboard built using **Arduino Uno**, **HW-827 pulse sensor**, **Node.js**, **Socket.io**, and **React.js** to visualize live pulse data and BPM on an interactive UI.
 
 
