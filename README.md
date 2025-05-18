@@ -71,6 +71,6 @@ VitalTrack is a Health monitoring dashboard built using **Arduino Uno**, **HW-82
 
 ## 📌 Note
 
-This project is designed for educational and health visualization purposes only and **should not be used for medical diagnosis.**
+This project is designed for educational and health visualization purposes only and **should not be used for medical diagnosis.** 
 
 ---
